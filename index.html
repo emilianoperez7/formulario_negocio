@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <title>TAREA VALIDACION</title>
+  <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+</head>
+<body>
+  <div class="ancho centrar">
+    <div class="contactanos">
+      <h2>Contáctanos</h2>
+      <br>
+      <h1>¿Necesitas ayuda para hacer crecer tu negocio?</h1>
+      <br>
+      <p>Solicita más información y juntos idearemos la estrategia perfecta para cumplir tus metas</p>
+    </div>
+    <div class="formulario">  
+      <form action="datos.php" method="get" name="negocioform">
+        <input class="dos" type="text" name="nombre" id="nombre" placeholder="Nombre*">
+        <input class="dos" type="text" name="apellidos" id="apellidos" placeholder="Apellidos*">
+        <input class="dos" type="email" name="email" id="email" placeholder="Correo electrónico*">
+        <input class="dos" type="number" name="telefono" id="telefono" placeholder="Número de teléfono móvil*">
+    
+        <select class="salto" name="presupuesto" id="presupuesto">
+            <option value="">Selecciona tu presupuesto</option>
+            <option value="">De $18,000 - $25,000</option>
+            <option value="">De $25,000 - $45,000</option>
+            <option value="">De $45,000 - $100,000</option>
+        </select>
+    
+        <input class="salto" type="text" name="empresa" id="empresa" placeholder="Nombre de la empresa" class="doble">
+    
+        <select class="salto" name="industria" id="industria">
+            <option value="">Selecciona una industria de empresa*</option>
+            <option value="inmobiliaria">Inmobiliaria</option>
+            <option value="educacion">Educación</option>
+            <option value="turismo">Turismo</option>
+            <option value="energias renovables">Energías renovables</option>
+            <option value="serviciosprofesionales">Servicios profesionales</option>
+            <option value="startup">Startup</option>
+            <option value="ecommerce">Ecommerce</option>
+            <option value="financiera">Financiera</option>
+            <option value="salud">Salud</option>
+            <option value="agenciadigital">Agencia digital</option>
+            <option value="otro">Otro</option>
+        </select>
+    
+        <input class="salto" type="text" name="sitioweb" id="sitioweb" placeholder="Sitio Web" class="doble">
+    
+        <button type="button" id="boton_validar">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    let expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    $("#boton_validar").click(function(){
+        if($("#nombre").val().trim() == ''){
+            alert("Escribe tu nombre");
+            $("#nombre").focus();
+            return false;
+        }
+
+        if($("#apellidos").val().trim() == ''){
+            alert("Ingresa tus apellidos");
+            $("#apellidos").focus();
+            return false;
+        }
+
+        if(!expresionCorreo.test($("#email").val().trim())){
+            alert("Escribe un correo válido"); 
+            $("#email").focus();
+            return false; 
+        }
+        if($("#telefono").val().trim() == ''){
+            alert("Ingresa tu número de teléfono");
+            $("#telefono").focus();
+            return false;
+        }
+        if($("#industria").val().trim() == ''){
+            alert("Selecciona una industria");
+            $("#industria").focus();
+            return false;
+        }
+        $("form[name='negocioform']").submit();
+    });
+  </script>
+</body>
+</html>
